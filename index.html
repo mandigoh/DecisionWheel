@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Decision</title>
+
+    <style>
+
+    body {
+        height: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #E9EDEE;
+        margin: auto;
+        justify-content: center;
+    }
+    
+
+    h2, #final-value {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        color: black;
+    }
+
+    h3 {
+        font-size: 14px;
+        font-weight: normal;
+        text-align: center;
+        color: grey;
+    }
+
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin: auto;
+        width: 350px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; 
+    }
+
+    #decision-needed {
+        display: flex;
+        outline: none;
+        font-size: 16px;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 20px;
+        float: left;
+        text-transform: uppercase;
+    }
+
+    #spin-button {
+        display: flex;
+        padding: 0.5rem;
+        width: 100px;
+        outline: none;
+        background-color: black;
+        color: white;
+        font-size: 16px;
+        margin: 5px;
+        border-radius: 15px;   
+        float: left;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    #spin-button:hover {
+        background-color: white;
+        color: black;
+        border: 2px solid black;
+    }
+
+    .task, #item-list {
+        background-color: #E9EDEE;
+        padding: 0.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 5px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        border: none;
+        height: 100px;
+    }
+
+    #decision {
+        padding: 0.5rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid black;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        align-self: center;
+        text-align: center;
+        width: 250px;
+    }
+
+
+    hr {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: grey;
+        height: 1px;
+        border: none;
+    }
+
+    #arrow-ticker{
+        padding: 5px;
+        height: 25px;
+        width: 25px;
+        border-top: 2px solid #000;
+        border-left: 2px solid #000;
+        transform: rotate(225deg);
+     }
+
+     .wheel-container {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin: auto;
+        margin-top: 20px;
+        width: 350px;
+        align-items: center;
+        justify-content: center;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; 
+        
+    }
+
+     #wheel {
+        height: 200px;
+        width: 200px;
+     }
+
+
+    </style>
+
+
+
+</head>
+<body>
+
+    <div class="input-container">
+        <h2>Decision we're making today</h2>
+
+        <input id="decision" type="text"></input>
+        
+    
+        <h2>Options we're considering</h2>
+        <h3>Edit the options or add a new option on a new line </h3>
+
+        <textarea id="item-list" placeholder="Enter options separated by line breaks">
+Thai
+Japanese
+Chinese</textarea>
+
+        
+    </div>
+    
+    <div class="wheel-container">
+        <h2>The wheel shall decide...</h2>
+        <div id="decision-needed"></div>
+        
+        <span id="spin-button">Spin!</span>
+        <div id="arrow-ticker"></div>
+
+        <div id="final-value"></div>
+
+        <canvas id="wheel" style="width:100%"></canvas>
+
+    <!-- Load CDN for Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Load CDN for Chart JS Plugin to display text over chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
+
+    <script src="index.js"></script>
+
+    </div>
+
+</body>
+</html>
