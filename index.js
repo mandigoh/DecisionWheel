@@ -86,11 +86,15 @@ initializeChart();
 // Event listener for automatic updating when input values change
 inputValues.addEventListener("input", initializeChart);
 
+
+
 // Display value based on randomAngle
 const generateValue = (angleValue) => {
+  const adjustedValue = 360 - angleValue;
+
   for (let i of rotationValues) {
-      if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
-          // finalValue.innerHTML = `${i.value}`;
+      if (adjustedValue >= i.minDegree && adjustedValue <= i.maxDegree) {
+          finalValue.innerHTML = `${i.value}`;
           spinBtn.disabled = false;
           break;
       }
@@ -117,7 +121,7 @@ spinBtn.addEventListener("click", () => {
           resultValue -= 5;
           myChart.options.rotation = 0;
       } else if (count > 15 && myChart.options.rotation == randomDegree) {
-          //generateValue(randomDegree);
+          generateValue(randomDegree);
           clearInterval(rotationInterval);
           count = 0;
           resultValue = 101;
