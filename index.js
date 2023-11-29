@@ -40,7 +40,7 @@ const initializeChart = () => {
   console.log(rotationValues);
 
   const pieColors = [
-    "#1B9989", "#E9EDEE", "#F9C74F", "#126782",
+    "#1B9989", "#E9EDEE", "#F9C74F", "#4595C4", "#D98FB3",
   ];
 
   // Create a new chart if it doesn't exist
