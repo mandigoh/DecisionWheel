@@ -9,9 +9,9 @@ decisionInput.addEventListener('keydown', (event) => {
     }
   });
 
-  const wheel = document.getElementById("wheel"),
-  spinBtn = document.getElementById("spin-button"),
-  finalValue = document.getElementById("final-value"),
+  const wheel = document.getElementById("wheel");
+  spinBtn = document.getElementById("spin-button");
+  finalValue = document.getElementById("final-value");
   inputValues = document.getElementById("item-list");
 
 let myChart; // Declare myChart variable
@@ -25,7 +25,7 @@ const initializeChart = () => {
   rotationValues = inputData.map((value, index) => {
     let minDegree, maxDegree;
   
-    // Add 1 degree for each index greater than or equal to 1
+    // Setting range of angle degrees for each index on the pie chart
     if (index >= 1) {
       minDegree = (360 / inputData.length) * index + 1;
       maxDegree = (360 / inputData.length) * (index + 1);
@@ -88,7 +88,7 @@ inputValues.addEventListener("input", initializeChart);
 
 
 
-// Display value based on randomAngle
+// Display final value based on randomDegree
 const generateValue = (angleValue) => {
   const adjustedValue = 360 - angleValue;
 
@@ -115,18 +115,19 @@ spinBtn.addEventListener("click", () => {
   let rotationInterval = window.setInterval(() => {
       myChart.options.rotation = myChart.options.rotation + resultValue;
       myChart.update();
-      // if rotation > 360 reset it back to 0
+      // If rotation > 360 the count is incremented, resultValue reduced and rotation resets to 0
       if (myChart.options.rotation >= 360) {
           count += 1;
           resultValue -= 5;
           myChart.options.rotation = 0;
+      // If count exceeds 15 and rotation angle matches random degree, wheel stops
       } else if (count > 15 && myChart.options.rotation == randomDegree) {
           generateValue(randomDegree);
           clearInterval(rotationInterval);
           count = 0;
           resultValue = 101;
       }
-  }, 10);
+  }, 10); //where setInterval rotation logic is executed every 10milisecs
 });
 
 
